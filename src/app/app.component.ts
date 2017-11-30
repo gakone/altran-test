@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title: string = 'app';
+  citiesId: any = {
+    saoPaulo: 3448439,
+    santiago: 3983689,
+    buenosAires: 6559994,
+    lima: 3936456
+  };
 }
