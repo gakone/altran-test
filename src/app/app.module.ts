@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { TemperatureComponentComponent } from './temperature-component/temperature-component.component';
-import { TemperatureService } from './services/temperature-service.service';
-import { HttpModule } from '@angular/http';
 import { TemperatureComponentModule } from './temperature-component/temperature-component.module';
 
 @NgModule({
@@ -12,9 +11,10 @@ import { TemperatureComponentModule } from './temperature-component/temperature-
     AppComponent,
   ],
   imports: [
+    NgbModule.forRoot(),
     BrowserModule,
     HttpModule,
-    TemperatureComponentModule
+    TemperatureComponentModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
