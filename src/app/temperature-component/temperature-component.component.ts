@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TemperatureService } from '../services/temperature-service.service';
+import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
 @Component({
   selector: 'app-temperature-component',
@@ -14,14 +15,18 @@ export class TemperatureComponentComponent implements OnInit {
   constructor(private temperatureService: TemperatureService) { }
 
   ngOnInit() {
-    this.temperatureService.getTemperatureByCity(this.cityId).subscribe(
-      (response: any) => {
-        this.city = response;
-      }, (error: any) => {
-        console.log('error', error.error.message);
-      }, () => {
-        console.log('complete');
-      }
+    IntervalObservable.create(5000).subscribe(() => {
+      this.temperatureService.getTemperatureByCity(this.cityId)
+      .subscribe(
+        (response: any) => {
+          this.city = response;
+        }, (error: any) => {
+          console.log('error', error.error.message);
+        }, () => {
+          console.log('complete');
+        }
+      );
+    }
     );
   }
 
