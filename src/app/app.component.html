@@ -1,6 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>Welcome to {{title}}!</h1>
+  <h1>{{title}}</h1>
 </div>
-<app-temperature-component [cityId]="citiesId.lima"></app-temperature-component>
 
+
+<div class="container">
+  <div class="row text-center text-lg-left">
+    <ng-template ngFor let-city [ngForOf]="cities">
+      <app-temperature-component [cityId]="city.id"></app-temperature-component>
+    </ng-template>
+  </div>
+</div>

@@ -15,7 +15,9 @@ export class TemperatureComponentComponent implements OnInit {
   constructor(private temperatureService: TemperatureService) { }
 
   ngOnInit() {
-    IntervalObservable.create(5000).subscribe(() => {
+    IntervalObservable.create(180000)
+    .startWith(0)
+    .subscribe(() => {
       this.temperatureService.getTemperatureByCity(this.cityId)
       .subscribe(
         (response: any) => {
