@@ -11,6 +11,7 @@ export class TemperatureComponentComponent implements OnInit {
 
   @Input('cityId') cityId: number;
   city: any = {};
+  historyTemp: any = [];
 
   constructor(private temperatureService: TemperatureService) { }
 
@@ -23,13 +24,19 @@ export class TemperatureComponentComponent implements OnInit {
         (response: any) => {
           this.city = response;
         }, (error: any) => {
-          console.log('error', error.error.message);
+          console.log('error', error.message);
         }, () => {
-          console.log('complete');
+          this.saveHistory();
         }
       );
     }
     );
+  }
+
+  saveHistory() {
+    this.historyTemp = localStorage.getItem('historyTemp') !== null ? JSON.parse(localStorage.getItem('historyTemp')) : [];
+    this.historyTemp.push({ city: this.city.name, temp: this.city.main.temp });
+    localStorage.setItem('historyTemp', JSON.stringify(this.historyTemp));
   }
 
 }
