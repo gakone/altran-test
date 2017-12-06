@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'Altran temperature test';
+  subtitle: string = 'Temperatures are updated every three minutes and stored in localStorage.';
   cities: any = [
     {name: 'saoPaulo', id: 3448439},
     {name: 'santiago', id: 3983689},

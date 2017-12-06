@@ -1,13 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>{{title}}</h1>
-</div>
-
-
 <div class="container">
-  <div class="row text-center text-lg-left">
+  <div class="jumbotron">
+    <h1>{{title}}</h1>      
+    <p>{{subtitle}}</p>
+  </div>
+
+  <div class="row ">
     <ng-template ngFor let-city [ngForOf]="cities">
-      <app-temperature-component [cityId]="city.id"></app-temperature-component>
+      <app-temperature-component [cityId]="city.id" class="col-lg-6 col-md-6 col-sm-12"></app-temperature-component>
     </ng-template>
   </div>
 </div>

@@ -29,8 +29,7 @@ export class TemperatureComponentComponent implements OnInit {
           this.saveHistory();
         }
       );
-    }
-    );
+    });
   }
 
   saveHistory() {
