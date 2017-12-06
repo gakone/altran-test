@@ -12,6 +12,7 @@ export class TemperatureComponentComponent implements OnInit {
   @Input('cityId') cityId: number;
   city: any = {};
   historyTemp: any = [];
+  currentTemp: string;
 
   constructor(private temperatureService: TemperatureService) { }
 
@@ -26,6 +27,7 @@ export class TemperatureComponentComponent implements OnInit {
         }, (error: any) => {
           console.log('error', error.message);
         }, () => {
+          this.currentTemp = this.city.main.temp;
           this.saveHistory();
         }
       );

@@ -1,6 +1,12 @@
 <div class="card text-center temp-component" style="width: 20rem;">
   <div class="card-body">
     <h4 class="card-title">{{city?.name}}</h4>
-    <p class="card-text">Temperature: {{city?.main?.temp}}ºC</p>
+    <p class="card-text h1">{{currentTemp}}ºC</p>
+  </div>
+
+  <div class="progress">
+    <div [ngClass]="{'progress-bar': true, 'bg-info': true, 'bg-warning': currentTemp > 18, 'bg-danger': currentTemp > 20}" 
+      role="progressbar"  [ngStyle]="{'width': currentTemp*100/40 + '%'}">
+    </div>
   </div>
 </div>
