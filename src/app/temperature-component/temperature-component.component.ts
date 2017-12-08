@@ -13,6 +13,8 @@ export class TemperatureComponentComponent implements OnInit {
   city: any = {};
   historyTemp: any = [];
   currentTemp: string;
+  progressStatus: number;
+  parsedTemp: number;
 
   constructor(private temperatureService: TemperatureService) { }
 
@@ -24,10 +26,12 @@ export class TemperatureComponentComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.city = response;
+          this.parsedTemp = Number(response.main.temp);
         }, (error: any) => {
           console.log('error', error.message);
         }, () => {
           this.currentTemp = this.city.main.temp;
+          this.progressStatus = Number(this.currentTemp) * 100 / 40;
           this.saveHistory();
         }
       );

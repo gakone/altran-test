@@ -5,8 +5,8 @@
   </div>
 
   <div class="progress">
-    <div [ngClass]="{'progress-bar': true, 'bg-info': true, 'bg-warning': currentTemp > 18, 'bg-danger': currentTemp > 20}" 
-      role="progressbar"  [ngStyle]="{'width': currentTemp*100/40 + '%'}">
+    <div [ngClass]="{'progress-bar': true, 'bg-info': true, 'bg-warning': parsedTemp > 18, 'bg-danger': parsedTemp > 20}" 
+      role="progressbar"  [ngStyle]="{'width': progressStatus + '%'}">
     </div>
   </div>
 </div>
